@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="easterndargon:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="eastern-dargon.war">
+      <element id="artifact" artifact-name="easterndargon:war exploded" />
+    </root>
+  </artifact>
+</component>
