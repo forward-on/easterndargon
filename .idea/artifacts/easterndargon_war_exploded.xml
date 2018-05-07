@@ -42,6 +42,9 @@
           <element id="file-copy" path="$MAVEN_REPOSITORY$/org/springframework/spring-jdbc/4.2.5.RELEASE/spring-jdbc-4.2.5.RELEASE.jar" output-file-name="spring-jdbc-4.2.5.release.jar" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.6.1" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.6.1" />
+          <element id="library" level="project" name="Maven: org.apache.zookeeper:zookeeper:3.4.12" />
+          <element id="library" level="project" name="Maven: jline:jline:0.9.94" />
+          <element id="library" level="project" name="Maven: org.apache.yetus:audience-annotations:0.5.0" />
         </element>
       </element>
       <element id="directory" name="META-INF">
