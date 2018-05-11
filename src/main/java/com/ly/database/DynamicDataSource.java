@@ -1,4 +1,4 @@
-package com.ly;
+package com.ly.database;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 

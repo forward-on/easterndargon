@@ -106,7 +106,7 @@
     </bean>
 
 
-    <bean id="dynamicDataSource" class="com.ly.DynamicDataSource">
+    <bean id="dynamicDataSource" class="com.ly.database.DynamicDataSource">
         <property name="defaultDataSourceName" value="${default.datasource.name}" />
         <property name="masterDataSourceName" value="${jdbc.datasource.name}" />
         <property name="slaveDataSourceNames">
