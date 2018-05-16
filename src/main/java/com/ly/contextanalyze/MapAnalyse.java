@@ -15,6 +15,7 @@ public class MapAnalyse {
     public void concurrentHashMap(){
         ConcurrentHashMap<Object, Object> concurrentHashMap = new ConcurrentHashMap<>();
         System.out.println("hahaha");////dfae
+        System.out.println("hahaha");//注释了
     }
 
 }
