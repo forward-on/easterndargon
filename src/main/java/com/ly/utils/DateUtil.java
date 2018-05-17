@@ -161,7 +161,7 @@ public class DateUtil {
     }
 
     public static void sort(List<Date> dateList) {
-        dateList.sort(DateUtil::compareDate);
+//        dateList.sort(DateUtil::compareDate);
     }
 
     /**
