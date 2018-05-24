@@ -47,7 +47,7 @@
 
         <!--定义rabbit template用于数据的接收和发送 -->
         <rabbit:template id="amqpTemplate" connection-factory="connectionFactory"
-                         exchange="exchangeTest" />
+                         exchange="exchangeTest" message-converter="jsonMessageConverter"/>
 
         <!-- 消息接收者 -->
         <bean id="messageReceiver" class="com.ly.rabbitmq.ConsumerOne"></bean>
@@ -101,7 +101,7 @@
 
         <!--定义rabbit template用于数据的接收和发送 -->
         <rabbit:template id="amqpTemplate2" connection-factory="connectionFactory2"
-                         exchange="exchangeTest2" />
+                         exchange="exchangeTest2" message-converter="jsonMessageConverter"/>
 
         <!-- 消息接收者 -->
         <bean id="recieverThree" class="com.ly.rabbitmq.ConsumerThree"></bean>
