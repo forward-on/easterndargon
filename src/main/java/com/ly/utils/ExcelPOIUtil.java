@@ -8,8 +8,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -227,15 +226,14 @@ public class ExcelPOIUtil {
             Object value;
             for(int i = START_ROW , rowCount = 0; rowCount < sheet.getPhysicalNumberOfRows() ; i++ ){
                 row = sheet.getRow(i);
-                colList = new ArrayList<Object>();
+                colList = new ArrayList<>();
+                rowCount++;
                 if(row == null){
                     //当读取行为空时
-                    if(i != sheet.getPhysicalNumberOfRows()){//判断是否是最后一行
+                    if(i < sheet.getPhysicalNumberOfRows()){//判断是否是最后一行
                         rowList.add(colList);
                     }
                     continue;
-                }else{
-                    rowCount++;
                 }
                 for( int j = row.getFirstCellNum() ; j <= row.getLastCellNum() ;j++){
                     cell = row.getCell(j);
@@ -299,15 +297,14 @@ public class ExcelPOIUtil {
             Object value;
             for(int i = START_ROW , rowCount = 0; rowCount < sheet.getPhysicalNumberOfRows() ; i++ ){
                 row = sheet.getRow(i);
-                colList = new ArrayList<Object>();
+                colList = new ArrayList<>();
+                rowCount++;
                 if(row == null){
                     //当读取行为空时
-                    if(i != sheet.getPhysicalNumberOfRows()){//判断是否是最后一行
+                    if(i < sheet.getPhysicalNumberOfRows()){//判断是否是最后一行
                         rowList.add(colList);
                     }
                     continue;
-                }else{
-                    rowCount++;
                 }
                 for( int j = row.getFirstCellNum() ; j <= row.getLastCellNum() ;j++){
                     cell = row.getCell(j);
@@ -358,6 +355,45 @@ public class ExcelPOIUtil {
         }catch(Exception e){
             System.out.println("exception");
             return null;
+        }
+    }
+
+
+    /*****************************************************************************/
+
+    public static void writeExcel(ArrayList<ArrayList<Object>> result,String path){
+        if(result == null){
+            return;
+        }
+        HSSFWorkbook wb = new HSSFWorkbook();
+        HSSFSheet sheet = wb.createSheet("sheet1");
+        for(int i = 0 ;i < result.size() ; i++){
+            HSSFRow row = sheet.createRow(i);
+            if(result.get(i) != null){
+                for(int j = 0; j < result.get(i).size() ; j ++){
+                    HSSFCell cell = row.createCell(j);
+                    cell.setCellValue(result.get(i).get(j).toString());
+                }
+            }
+        }
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        try
+        {
+            wb.write(os);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        byte[] content = os.toByteArray();
+        File file = new File(path);//Excel文件生成后存储的位置。
+        OutputStream fos  = null;
+        try
+        {
+            fos = new FileOutputStream(file);
+            fos.write(content);
+            os.close();
+            fos.close();
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
