@@ -28,6 +28,7 @@ public class TestCyclicBarrier {
         }).start();
         try {
             cyclicBarrier.await();
+            System.out.println(0);
         } catch (InterruptedException e) {
         } catch (BrokenBarrierException e) {
             e.printStackTrace();
