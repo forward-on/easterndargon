@@ -1,18 +1,13 @@
 package com.ly.designpattern.strategy;
 
 /**
- * @Description:
+ * @Description: 策略的抽象接口
  * @Date 2018-07-03 20:39
  * @Author ly
  */
-public abstract class TransTools {
+public interface TransTools {
 
-    public abstract void goTool();
+    void goTool();
 
-    public TransTools() {
-    }
-
-    public void goSay() {
-        System.out.println("乘坐xxx");
-    }
+    void cost();
 }
