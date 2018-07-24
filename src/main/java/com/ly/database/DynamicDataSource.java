@@ -11,7 +11,7 @@ import java.util.Random;
  */
 public class DynamicDataSource extends AbstractRoutingDataSource {
 
-    private static final ThreadLocal<String> dataSourceKey = new InheritableThreadLocal<String>();
+    private static final ThreadLocal<String> dataSourceKey = new InheritableThreadLocal<>();
     private static List<String> slaveDataSourceNames;
     private static String masterDataSourceName;
     private static String defaultDataSourceName;

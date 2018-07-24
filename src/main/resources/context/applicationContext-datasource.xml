@@ -21,7 +21,7 @@
     </bean>
 
     <!-- AOP动态切换 -->
-    <!--<bean id="dataSourceAspect" class="com.bbtree.framework.db.DataSourceAspect" />
+    <bean id="dataSourceAspect" class="com.ly.database.DataSourceAspect" />
     <aop:config>
         <aop:aspect id="aspect" ref="dataSourceAspect">
             <aop:pointcut id="service"
@@ -30,7 +30,7 @@
             <aop:after pointcut-ref="service" method="doAfter" />
             <aop:around pointcut-ref="service" method="doAround" />
         </aop:aspect>
-    </aop:config>-->
+    </aop:config>
 
     <!--master -->
     <bean id="masterDateSource" class="com.alibaba.druid.pool.DruidDataSource"
@@ -146,7 +146,7 @@
     <!-- 通过扫描的模式,自动注入bean -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-        <property name="basePackage" value="com.bbtree.*.*.dao" />
+        <property name="basePackage" value="com.ly.*.*.dao" />
     </bean>
 
 

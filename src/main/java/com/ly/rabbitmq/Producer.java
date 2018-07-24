@@ -12,15 +12,15 @@ import java.io.IOException;
  * @author : ly.
  * @Date : 2018/5/8.
  */
-@Service
+//@Service
 public class Producer {
 
     private Logger logger = LoggerFactory.getLogger(Producer.class);
 
-    @Resource(name="amqpTemplate")
+//    @Resource(name="amqpTemplate")
     private AmqpTemplate amqpTemplate;
 
-    @Resource(name="amqpTemplate2")
+//    @Resource(name="amqpTemplate2")
     private AmqpTemplate amqpTemplate2;
 
     public void sendMessage(Object message) throws IOException {
