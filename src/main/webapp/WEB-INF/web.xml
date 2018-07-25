@@ -9,6 +9,7 @@
   <!-- 项目名称 -->
   <display-name>easterndargon</display-name>
 
+  <!--设置请求时的字符编码-->
   <context-param>
       <!--web项目的绝对路径，默认值是webApp.root-->
       <param-name>webAppRootKey</param-name>
