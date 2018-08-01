@@ -160,8 +160,8 @@
     </mvc:annotation-driven>
 
     <!--true:cglib代理  false即默认:JDK动态代理-->
-    <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
-    <aop:aspectj-autoproxy/>
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!--<aop:aspectj-autoproxy/>-->
 
     <import resource="classpath:context/applicationContext-*.xml"/>
 
