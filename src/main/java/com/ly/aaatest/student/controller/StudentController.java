@@ -31,7 +31,7 @@ public class StudentController {
 
     @ResponseBody
     @RequestMapping(value = "save", method = RequestMethod.POST)
-    public Object post(@RequestBody JSONObject jsonObject) {
+    public Student post(@RequestBody JSONObject jsonObject) {
 
         Student student = new Student();
         student.setAge(jsonObject.getInteger("age"));
@@ -41,12 +41,8 @@ public class StudentController {
         Date now = new Date();
         student.setCreateTime(now);
         student.setUpdateTime(now);
-        int insert = studentService.insert(student);
-        if (insert > 0) {
-            return "success";
-        } else {
-            return "fail";
-        }
+        studentService.insert(student);
+        return student;
     }
 
 }

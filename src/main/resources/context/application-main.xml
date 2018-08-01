@@ -21,6 +21,21 @@
     <!-- 默认的注解映射的支持 -->
     <mvc:annotation-driven/>
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.ly.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+        <!--<mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.ly.interceptor.CorsInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.ly.interceptor.RspVoExceptionInterceptor" c:jsonWriter-ref="jsonWriter"/>
+        </mvc:interceptor>-->
+    </mvc:interceptors>
+
     <!--<mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
@@ -51,16 +66,16 @@
     </mvc:interceptors>-->
 
     <!-- 日志切入点 -->
-    <!--<bean id="logService" class="com.bbtree.log.impl.LogServiceImpl"/>
+    <bean id="logService" class="com.ly.log.LogServiceImpl"/>
     <aop:config>
-        &lt;!&ndash; 切入点 &ndash;&gt;
-        <aop:pointcut expression="execution(* com.bbtree.thb..*.*(..))" id="logPointcut" />
-        &lt;!&ndash; 切面 &ndash;&gt;
+        <!-- 切入点 -->
+        <aop:pointcut expression="execution(* com.ly..*.*(..))" id="logPointcut" />
+        <!-- 切面 -->
         <aop:aspect id="logAspect" ref="logService">
             <aop:before method="log" pointcut-ref="logPointcut" />
             <aop:after-returning method="logArgAndReturn" returning="returnObj" pointcut-ref="logPointcut" />
         </aop:aspect>
-    </aop:config>-->
+    </aop:config>
 
 
     <!-- MVC 常用的注解 -->
@@ -112,7 +127,7 @@
 
     <!-- 设置使用注解的类所在的jar包 ,当使用 <context:component-scan/> 后，就可以将 <context:annotation-config/>
         移除了 -->
-    <context:component-scan base-package="com.ly.aaatest"/>
+    <context:component-scan base-package="com.ly"/>
 
     <!-- 完成请求和注解POJO的映射 -->
     <!--<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />-->
@@ -145,7 +160,8 @@
     </mvc:annotation-driven>
 
     <!--true:cglib代理  false即默认:JDK动态代理-->
-    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
+    <aop:aspectj-autoproxy/>
 
     <import resource="classpath:context/applicationContext-*.xml"/>
 
