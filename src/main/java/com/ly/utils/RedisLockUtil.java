@@ -1,21 +1,29 @@
 package com.ly.utils;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Component;
+
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author : ly.
  * @Date : 2018/5/23.
  */
+@Component
 public class RedisLockUtil {
 
-//    RedisTemplate
+    @Autowired
+    private RedisTemplate<String, String> redisTemplate;
 
-    /*public static boolean isLock(String lockKey,Integer sec,ICacheClient cacheClient){
+    public boolean isLock(String lockKey,Integer sec){
         boolean isLock = false;
         try {
-            Long nx = cacheClient.setnx(lockKey, "1");
-            if (nx == 0) {
+            Boolean flag = redisTemplate.opsForValue().setIfAbsent(lockKey, "1");
+            if (flag) {
                 isLock = true;
             } else {
-                cacheClient.expire(lockKey, sec);
+                redisTemplate.opsForValue().getOperations().expire(lockKey, sec, TimeUnit.SECONDS);
             }
         }catch (Exception e){
 
@@ -23,8 +31,7 @@ public class RedisLockUtil {
         return isLock;
     }
 
-    public static void unLock(String lockKey,ICacheClient cacheClient){
-        cacheClient.del(lockKey);
+    public void unLock(String lockKey){
+        redisTemplate.opsForValue().getOperations().delete(lockKey);
     }
-*/
 }
