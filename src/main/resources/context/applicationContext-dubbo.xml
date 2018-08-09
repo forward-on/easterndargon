@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+			 http://www.springframework.org/schema/context
+    	   http://www.springframework.org/schema/context/spring-context-4.2.xsd
+			http://code.alibabatech.com/schema/dubbo
+			http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+    <dubbo:application name="${bbtree.dubbo.appname}"/>
+   	<dubbo:registry protocol="${bbtree.dubbo.registry.protocol}" address="${bbtree.dubbo.registry.address}"  group="${bbtree_env}"/>
+	<dubbo:protocol name="${bbtree.dubbo.protocol}" port="${bbtree.dubbo.protocol.port}" />
+
+
+
+    <!-- 服务提供者-->
+    <!--<dubbo:provider timeout="${bbtree.dubbo.provider.timeout}" retries="${bbtree.dubbo.provider.retries}"-->
+                    <!--threads="${bbtree.dubbo.provider.threads}"  accepts="${bbtree.dubbo.provider.accepts}"/>-->
+
+
+    <!-- 启动时不做服务是否可用检查 -->
+    <dubbo:consumer loadbalance="${bbtree.dubbo.consumer.loadbalance}" filter="${bbtree.dubbo.consumer.filter}"
+                    retries="${bbtree.dubbo.consumer.retries}" check="${bbtree.dubbo.consumer.check}" timeout="${bbtree.dubbo.consumer.timeout}"/>
+ 	<dubbo:monitor protocol="registry"/>
+
+	<!-- 不填，是所有的类 -->
+	<dubbo:annotation package="com.ly"/>
+
+</beans>
